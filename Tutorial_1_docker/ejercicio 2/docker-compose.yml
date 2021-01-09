@@ -1,0 +1,17 @@
+version: '3.6'
+services:
+  app:
+    build:
+      context: ./app
+    depends_on:
+      - mongo
+    environment: 
+      - MONGO_HOST=mongo
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo_data:/data
+    ports:
+      - 27017:27017
+volumes:
+  mongo_data:
